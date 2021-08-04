@@ -1,26 +1,24 @@
-# linux-environment-setup
+# Welcome to my linux environment setup
 
-Welcome!
+## My stack consists of the most 5 important elements:
+  - Arch linux
+  - Nvim
+  - Alacritty
+  - ZSH
+  - I3
 
-You are looking into my linux environment which I use for local development.
+## Installation steps:
 
-My stack consists of the most 5 important elements:
-  1. Arch linux
-  2. Nvim
-  3. Alacritty
-  4. ZSH
-  5. I3
+- DISABLE ALL SECURE FEATURES BY ANY LAPTOP :)
+	Most of the times all they want to do is make it less secure for profit. Just use linux.
 
-Installation steps:
+- Install arch linux ISO from [http://mirror.pmf.kg.ac.rs/archlinux/iso/2021.06.01/]
+	By the time you are watching this, there will be new versions. Choose the newest.
 
-DISABLE ALL SECURE FEATURES BY ANY LAPTOP OVER OR DIE :)
+- Make ISO bootable and plug it in
+	For this step you are free to use any method you want.
 
-Install arch linux ISO from:
-http://mirror.pmf.kg.ac.rs/archlinux/iso/2021.06.01/
-
-Make ISO bootable ( put ISO file to usb )
-
-Open bios on start laptop ( usually F2, with plugged bootable USB )
+- Open bios on start laptop ( usually F2, with plugged bootable USB )
 
 Disable secure boot in bios.
 
