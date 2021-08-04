@@ -9,7 +9,7 @@
 
 ## Installation steps:
 
-- DISABLE ALL SECURE FEATURES BY ANY LAPTOP :)
+DISABLE ALL SECURE FEATURES BY ANY LAPTOP :)
 	Most of the times all they want to do is make it less secure for profit. Just use linux.
 
 - Install arch linux ISO from [http://mirror.pmf.kg.ac.rs/archlinux/iso/2021.06.01/]
