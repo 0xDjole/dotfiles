@@ -9,38 +9,44 @@
 
 ## Installation steps:
 
-DISABLE ALL SECURE FEATURES BY ANY LAPTOP :)
-	Most of the times all they want to do is make it less secure for profit. Just use linux.
+- Install arch linux ISO from [http://mirror.pmf.kg.ac.rs/archlinux/iso/2021.06.01/].
+By the time you are watching this, there will be new versions. Choose the newest.
 
-- Install arch linux ISO from [http://mirror.pmf.kg.ac.rs/archlinux/iso/2021.06.01/]
-	By the time you are watching this, there will be new versions. Choose the newest.
+- Make ISO bootable and plug it in. For this step you are free to use any method you want.
 
-- Make ISO bootable and plug it in
-	For this step you are free to use any method you want.
+- Open bios on start laptop ( usually F2, with plugged bootable USB ).
 
-- Open bios on start laptop ( usually F2, with plugged bootable USB )
+- Disable secure boot in bios.
 
-Disable secure boot in bios.
+- Change usb boot order ( select your USB device and move it to the top of boot order )    
 
-Put usb order first in bios ( select device and put on top of boot order )
+- By this time you should get prompted with your Arch Linux installer which is just the terminal
 
-To setup the wifi:
-iwctl
+- Let's get that wifi rolling!. <br />
+	```
+	iwctl
+	```
+	```
 	device list
-	station {device name} scan
-	station {device name} get-networks
-	station {device name} connect {SSID} ( Enter passphrase )
+	station ${device name} scan
+	station ${device name} get-networks
+	station ${device name} connect ${SSID} ( Enter passphrase )
 	exit
+	```
+	Verify wifi connection once you are connected:
+	```
+	ping google.com ( Confirm net )
+	```
+
+- Setup the time
+	```
+	timedatectl set-ntp
+	```
+	Verift the time:
+	```
+	timedatectl status
+	```
 	
-Verify wifi connection once you are connected:
-ping google.com ( Confirm net )
-
-Setup the time:
- timedatectl set-ntp
-
-Verift the time:
-timedatectl status
-
 Find Hard Disk you wish to install linux on:
 fdisk -l
 
