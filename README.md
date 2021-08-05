@@ -195,49 +195,107 @@ vim /etc/hosts
      ::1 		localhost
      127.0.1.1 		${hostname}.localdomain	${hostname}
 ```
-
+- Set the root password
+```
 passwd
+```
 
-useradd -m {user name}
-
-passwd {user name}
-
+- Add a user that you will use, since using **root** is not practical.
+```
+useradd -m ${username}
+```
+Then we set the password for our new user
+```
+passwd {username}
+```
+We also give him different permissions. Most important is **wheel**. Then we can assume **root** role essentially by running **sudo**.
+```
 usermod -aG wheel,audio,video,optical,storage,input {username}
-
+```
+But we all want to uncomment **wheel all alll** line so **wheel** group acts as godlike group.
+```
 EDITOR=nvim visudo
-Uncomment wheel all group
+```
+As said, we uncomment **wheel all all** line, so wheel is any role.
 
 
+- Create boot entry for first partition. Then install grub, so our system knows where to **boot** from.
+```
 mkdir /boot/EFI
-
+```
+```
 mount /dev/{ First boot partition } /boot/EFI
-
+```
+```
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
-
+```
+```
 grub-mkconfig -o /boot/grub/grub.cfg
+```
 
+- Enable **NetowkrManager**, so we can have access to wifi next time we log in.
+```
 systemctl enable NetworkManager.service
+```
 
+- Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
+```
 git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd ..  && rm -rf yay-git
-
+```
+Then we install:
+```
 yay -S google-chrome bumblebee-status libinput-gestures
-
+```
+We will also install nvm to manage our node versions.
+```
 git clone http://github.com/creationix/nvm.git .nvm
-
+```
+```
 source ~/.nvm/nvm.sh
+```
 
-setup nvim ( Take nvim folder and replace it with your ~/.config/nvim )
+- Configure our neovim. Take nvim folder and replace it with your ~/.config/nvim.
+Then simply trigger:
+```
+nvim
+```
+```
+:PlugInstall
+```
 
+- Configure sound with
+```
 alsa-mixer
+```
 
+- We have to configure out touchpad as well. We take shared default one and put in <code>/etc</code>
+```
 cp /usr/share/X11/xorg.conf.d/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
-Add to touchpad: 
+```
+Then add to touchpad section:
+```
 	Option "NaturalScrolling" "true"
 	Option "Tapping" "true"
+```
 
-vim ~/.zlogin, check djole setup
+- To run **startx** on login take .zlogin file from repo and put it in <code>~/.zlogin</code>
+```
+vim ~/.zlogin
+```
 
-vim /bin/bright && chmod a+x /bin/bright
+- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>.
+Then simply:
+```
+chmod a+x /bin/bright
+```
+I3 will be calling this <code>exec</code> file.
  
+- Finally we unmount and that's it:
+``` 
 umount -I /mnt
+```
 
+All that is left is to <code>reboot</code> and enjoy.
+
+#NOTES:
+- You might need to change I3 on couple of places
