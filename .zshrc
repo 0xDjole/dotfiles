@@ -11,9 +11,9 @@ alias ls='ls --color=auto'
 alias vim='nvim'
 PS1='[\u@\h \W]\$ '
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-export PATH="~/Desktop/arky/tox/server/bin:$PATH"
+export NVM_DIR=~/.nvm
+ [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+ 
 export GOPATH=$HOME/go
 
 export PATH="/home/djole/.local/share/solana/install/active_release/bin:$PATH"
