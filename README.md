@@ -47,72 +47,154 @@ By the time you are watching this, there will be new versions. Choose the newest
 	timedatectl status
 	```
 	
-Find Hard Disk you wish to install linux on:
-fdisk -l
+- Next up we have to do the partitioning.
+	Find Hard Disk you wish to install linux on.
+	```
+	fdisk -l
+	```
+	Select Hard Disk you wish to install linux on.
+	```
+	fdisk /dev/${Hardisk/SSD name}
+	```
+	This will lead us to **fdisk** environment. We have to create a partition table with 3 partitions. Bootable, swap and filesystem once.
+	Filesystem is the one most important for us, because our Linux is actually gonna live on that partition.
 
-Select Hard Disk you wish to install linux on:
-fdisk /dev/${ Hardisk/SSD name }
-
-
+	Let' create partition table.
+	```
 	g
-	n   ( Create boot partition, make it 550M )
-		1
-		Enter
-		+550M
-	n   ( Create swap partition, make it 2G )
-        	2
-        	Enter
-        	+2G
-	n   ( Create filesystem partition, let it take all space )
-        	3
-        	Enter
-        	Enter
-	t 
-		1
-		1
-        t
-		2
-		19
-	w
+	```
+	Create boot partition. You will get prompted to fill parition number and size.
+	```
+	n 
+	```
+	
+	Partition number <code>1</code>
+		
+	Partition size <code>+550M</code>
+	
+	Create swap partition
+	```
+	n 
+	```
+	
+	Partition number <code>2</code>
+		
+	Partition size <code>+2G</code>
+	
+	Create filesystem partition
+	```
+	n 
+	```
+	
+	Partition number <code>3</code>
+		
+	Partition size will be the rest of remaining memory. Just hit <code>Enter</code>
+	
+	Next we have to change type of boot partition.
+	<code>t</code> 
+	<code>1</code>
+	<code>1</code>
+        
+	Next let's change swap
+	<code>t</code>
+	<code>2</code>
+	<code>19</code>
+	
+	Last filesystem partition is already correct type becauase it is selected by default.
+	
+	Write out our partition table
+	<code>w</code>
   
   
+- Out first boot partition is going to be **FAT** type
+```
 mkfs.fat -F32 /dev/{ Device name partition 1 }
+```
 
+- Adding swap parition
+```
 mkswap /dev/{ Device name partition 2 }
+```
 
+- Turning the swap on
+```
 swapon /dev/{ Device name partition 2 }
+```
 
+- Filesystem partition is gonna be **EXT4**
+```
 mkfs.ext4 /dev/{ Device name partition 3 }
+```
 
+- Then we mount our filesystem partition to <code>/mnt</code> path
+```
 mount /dev/{ Device name partition 3 } /mnt
+```
 
+- Now we need install linux on our <code>/mnt</code> path.
+To initilize our linux instalation on our partition that is mount
+```
 pacstrap /mnt base linux linux-firmware
+```
 
+- Genfstab our <code>/mnt</code>
+```
 genfstab -U /mnt >> /mnt/etc/fstab
+```
 
+- Finally let's enter our <code>/mnt</code> as arch installation.
+```
 arch-chroot /mnt
+```
 
+- Find your zone. It should be close to your location at least.
+```
 ls /usr/share/zoneinfo
-
+```
+- Then we set it up simply by:
+```
 ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
+```
 
+- Let's check is our clock is correct.
+```
 hwclock --systohc
+```
 
+- Install all of the required packages with pacman ( some might be missing from the list.
+```
 pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh
+```
 
-vim ~/.bashrc && source ~/.bashrc ( check Djole .bashrc file ) 
+- Add <code>.zshrc</code>
+```
+nvim ~/.zshrc && source ~/.zshrc ( check out my .zshrc file ) 
+```
 
+- Now we uncomment <code>en-US</code> language so our Linux system displays all the text in that language.
+```
 vim /etc/locale.gen ( uncomment line 177 )
-
+```
+Then we reload:
+```
 locale-gen
+```
 
-vim /etc/hostname ( Write in your hostname.., We choose "arch" )
+- Set the hostname.
+```
+vim /etc/hostname
+```
+Then simply write wanted **hostname**. I recomment "arch".
 
+- Set the hosts
+```
 vim /etc/hosts
+```
+```
      127.0.0.1 		localhost
      ::1 		localhost
-     127.0.1.1 		{hostname}.localdomain	{hostname}
-
+     127.0.1.1 		${hostname}.localdomain	${hostname}
+```
 
 passwd
 
