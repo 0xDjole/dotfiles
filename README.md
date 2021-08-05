@@ -187,13 +187,13 @@ vim /etc/hostname
 Then simply write wanted **hostname**. I recomment "arch".
 
 - Set the hosts
-	```
-	vim /etc/hosts
-	```
-	```
-	     127.0.0.1 		localhost
-	     ::1 		localhost
-	     127.0.1.1 		${hostname}.localdomain	${hostname}
+```
+vim /etc/hosts
+```
+```
+     127.0.0.1 		localhost
+     ::1 		localhost
+     127.0.1.1 		${hostname}.localdomain	${hostname}
 ```
 - Set the root password
 	```
