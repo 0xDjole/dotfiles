@@ -1,26 +1,19 @@
-syntax on
+syntax on 
 colorscheme onedark
 
 call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'ryanoasis/vim-devicons'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'rust-lang/rust.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1
-let g:onedark_termcolors=256
-
-let mapleader = " "
-let g:rustfmt_autosave = 1
-
+set nocompatible
 set encoding=UTF-8
 set background=dark
 set nu
@@ -30,7 +23,11 @@ set ai
 set si
 set clipboard=unnamedplus
 
-" NERDTree config
+let mapleader = " "
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer']
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts = 1
+let g:onedark_termcolors=256
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []

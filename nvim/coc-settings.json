@@ -5,7 +5,9 @@
     "typescriptreact",
     "json",
     "javascriptreact",
-    "typescript.tsx"
+    "typescript.tsx",
+    "javascript.jsx",
+    "rust"
   ],
   "eslint.autoFixOnSave": true
 }
