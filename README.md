@@ -284,10 +284,9 @@ To initilize our linux instalation on our partition that is mount
 	vim ~/.zlogin
 	```
 
-	- To configure alacritty take alacritty.yml file from repo and put it in <code>~/.config/alacritty/</code>
+- To configure alacritty take alacritty.yml file from repo and put it in <code>~/.config/alacritty/</code>
 
-	- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>.
-	Then simply:
+- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>. After:
 	```
 	chmod a+x /bin/bright
 	```
