@@ -283,6 +283,8 @@ Then add to touchpad section:
 vim ~/.zlogin
 ```
 
+- To configure alacritty take alacritty.yml file from repo and put it in <code>~/.config/alacritty/</code>
+
 - Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>.
 Then simply:
 ```
