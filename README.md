@@ -164,12 +164,28 @@ To initilize our linux instalation on our partition that is mount
 
 - Install all of the required packages with pacman ( some might be missing from the list.
 	```
-	pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh
+	pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh wget
 	```
 
 - Copy <code>.zshrc</code> from repo to <code>**$HOME**/.zshrc</code> for ZSH Shell.
 	```
 	nvim **$HOME**/.zshrc && source **$HOME**/.zshrc
+	```
+	Install:
+	```
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	```
+	and
+	```
+	git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+	```
+	and 
+	```
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	```
+	and 
+	```
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 	```
 	To have the same configuration, you can also copy <code>.p10k.zsh</code> from repo into your <code>**$HOME**/.p10k.zsh</code>
 
