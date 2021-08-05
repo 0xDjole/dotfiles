@@ -292,9 +292,10 @@ To initilize our linux instalation on our partition that is mount
 	```
 	I3 will be calling this <code>exec</code> file.
 
-- Take **i3config** from repo and put it <code>~/.config/alacritty/</code> file. Also download **arch.png** from repo if you want to use it as a background. I put my in <code>~/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path. 
-Also note to change your monitor positions and everything regarding i3 for your own system. 
-**I3 file contains sections specific for your system, so a bit work will be rquired.**
+- Copy <code>i3config</code>. Put it in <code>~/.config/i3/config</code>.
+	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>~/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path. 
+	Also note to change your monitor positions and everything regarding i3 for your own system. 
+	**I3 file contains sections specific for your system, so a bit work will be rquired.**
 
 - Finally we unmount and that's it:
 ``` 
