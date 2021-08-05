@@ -269,7 +269,7 @@ To initilize our linux instalation on our partition that is mount
 	git clone http://github.com/creationix/nvm.git .nvm
 	```
 	```
-	source **$HOME**/.nvm/nvm.sh
+	source $HOME/.nvm/nvm.sh
 	```
 
 - Configure our neovim. Take nvim folder and replace it with your **$HOME**/.config/nvim.
@@ -298,7 +298,7 @@ To initilize our linux instalation on our partition that is mount
 
 - To run **startx** on login take .zlogin file from repo and put it in <code>**$HOME**/.zlogin</code>
 	```
-	vim **$HOME**/.zlogin
+	vim $HOME/.zlogin
 	```
 
 - To configure alacritty take alacritty.yml file from repo and put it in <code>**$HOME**/.config/alacritty/</code>
