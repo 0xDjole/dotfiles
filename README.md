@@ -292,6 +292,9 @@ chmod a+x /bin/bright
 ```
 I3 will be calling this <code>exec</code> file.
  
+- Take <code>i3config</code> from repo and put it in <code>~/.config/i3/config</code> file. Also fownload **arch.png** from repo if you want to use it as a background. I put my in <code>~/Documents</code>, so be sure to tweak <code>~/.config/i3/config</code> if your image will be different path. 
+Also note to change your monitor positions and everything regarding i3 for your own system.
+
 - Finally we unmount and that's it:
 ``` 
 umount -I /mnt
@@ -299,5 +302,5 @@ umount -I /mnt
 
 All that is left is to <code>reboot</code> and enjoy.
 
-#NOTES:
+# NOTES:
 - You might need to change I3 on couple of places
