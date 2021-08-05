@@ -272,7 +272,7 @@ To initilize our linux instalation on our partition that is mount
 	source $HOME/.nvm/nvm.sh
 	```
 
-- Configure our neovim. Take nvim folder and replace it with your **$HOME**/.config/nvim.
+- Configure our neovim. Take nvim folder and replace it with your <code**$HOME**/.config/nvim</code>.
 	Then simply trigger:
 	```
 	nvim
