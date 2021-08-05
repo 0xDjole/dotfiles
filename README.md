@@ -4,7 +4,7 @@
   - Arch linux
   - Nvim
   - Alacritty
-  - ZSH
+  - Zsh
   - I3
 
 ## Installation steps:
