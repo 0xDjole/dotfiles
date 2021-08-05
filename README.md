@@ -167,10 +167,11 @@ To initilize our linux instalation on our partition that is mount
 	pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh
 	```
 
-- Add <code>.zshrc</code>
+- Copy <code>.zshrc</code> from repo to <code>**$HOME**/.zshrc</code> for ZSH Shell.
 	```
-	nvim **$HOME**/.zshrc && source **$HOME**/.zshrc ( check out my .zshrc file ) 
+	nvim **$HOME**/.zshrc && source **$HOME**/.zshrc
 	```
+	To have the same configuration, you can also copy <code>.p10k.zsh</code> from repo into your <code>**$HOME**/.p10k.zsh</code>
 
 - Now we uncomment <code>en-US</code> language so our Linux system displays all the text in that language.
 	```
