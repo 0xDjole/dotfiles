@@ -187,111 +187,111 @@ vim /etc/hostname
 Then simply write wanted **hostname**. I recomment "arch".
 
 - Set the hosts
-```
-vim /etc/hosts
-```
-```
-     127.0.0.1 		localhost
-     ::1 		localhost
-     127.0.1.1 		${hostname}.localdomain	${hostname}
+	```
+	vim /etc/hosts
+	```
+	```
+	     127.0.0.1 		localhost
+	     ::1 		localhost
+	     127.0.1.1 		${hostname}.localdomain	${hostname}
 ```
 - Set the root password
-```
-passwd
-```
+	```
+	passwd
+	```
 
 - Add a user that you will use, since using **root** is not practical.
-```
-useradd -m ${username}
-```
-Then we set the password for our new user
-```
-passwd {username}
-```
-We also give him different permissions. Most important is **wheel**. Then we can assume **root** role essentially by running **sudo**.
-```
-usermod -aG wheel,audio,video,optical,storage,input {username}
-```
-But we all want to uncomment **wheel all alll** line so **wheel** group acts as godlike group.
-```
-EDITOR=nvim visudo
-```
-As said, we uncomment **wheel all all** line, so wheel is any role.
+	```
+	useradd -m ${username}
+	```
+	Then we set the password for our new user
+	```
+	passwd {username}
+	```
+	We also give him different permissions. Most important is **wheel**. Then we can assume **root** role essentially by running **sudo**.
+	```
+	usermod -aG wheel,audio,video,optical,storage,input {username}
+	```
+	But we all want to uncomment **wheel all alll** line so **wheel** group acts as godlike group.
+	```
+	EDITOR=nvim visudo
+	```
+	As said, we uncomment **wheel all all** line, so wheel is any role.
 
 
 - Create boot entry for first partition. Then install grub, so our system knows where to **boot** from.
-```
-mkdir /boot/EFI
-```
-```
-mount /dev/{ First boot partition } /boot/EFI
-```
-```
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
-```
-```
-grub-mkconfig -o /boot/grub/grub.cfg
-```
+	```
+	mkdir /boot/EFI
+	```
+	```
+	mount /dev/{ First boot partition } /boot/EFI
+	```
+	```
+	grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+	```
+	```
+	grub-mkconfig -o /boot/grub/grub.cfg
+	```
 
 - Enable **NetowkrManager**, so we can have access to wifi next time we log in.
-```
-systemctl enable NetworkManager.service
-```
+	```
+	systemctl enable NetworkManager.service
+	```
 
 - Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
-```
-git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd ..  && rm -rf yay-git
-```
-Then we install:
-```
-yay -S google-chrome bumblebee-status libinput-gestures
-```
-We will also install nvm to manage our node versions.
-```
-git clone http://github.com/creationix/nvm.git .nvm
-```
-```
-source ~/.nvm/nvm.sh
-```
+	```
+	git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd ..  && rm -rf yay-git
+	```
+	Then we install:
+	```
+	yay -S google-chrome bumblebee-status libinput-gestures
+	```
+	We will also install nvm to manage our node versions.
+	```
+	git clone http://github.com/creationix/nvm.git .nvm
+	```
+	```
+	source ~/.nvm/nvm.sh
+	```
 
 - Configure our neovim. Take nvim folder and replace it with your ~/.config/nvim.
-Then simply trigger:
-```
-nvim
-```
-```
-:PlugInstall
-```
+	Then simply trigger:
+	```
+	nvim
+	```
+	```
+	:PlugInstall
+	```
 
 - Configure sound with
-```
-alsa-mixer
-```
+	```
+	alsa-mixer
+	```
 
 - We have to configure out touchpad as well. We take shared default one and put in <code>/etc</code>
-```
-cp /usr/share/X11/xorg.conf.d/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
-```
-Then add to touchpad section:
-```
-	Option "NaturalScrolling" "true"
-	Option "Tapping" "true"
+	```
+	cp /usr/share/X11/xorg.conf.d/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
+	```
+	Then add to touchpad section:
+	```
+		Option "NaturalScrolling" "true"
+		Option "Tapping" "true"
 ```
 
 - To run **startx** on login take .zlogin file from repo and put it in <code>~/.zlogin</code>
-```
-vim ~/.zlogin
-```
+	```
+	vim ~/.zlogin
+	```
 
-- To configure alacritty take alacritty.yml file from repo and put it in <code>~/.config/alacritty/</code>
+	- To configure alacritty take alacritty.yml file from repo and put it in <code>~/.config/alacritty/</code>
 
-- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>.
-Then simply:
-```
-chmod a+x /bin/bright
-```
-I3 will be calling this <code>exec</code> file.
- 
+	- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>.
+	Then simply:
+	```
+	chmod a+x /bin/bright
+	```
+	I3 will be calling this <code>exec</code> file.
+
 - Take <code>i3config</code> from repo and put it in <code>~/.config/i3/config</code> file. Also fownload **arch.png** from repo if you want to use it as a background. I put my in <code>~/Documents</code>, so be sure to tweak <code>~/.config/i3/config</code> if your image will be different path. 
 Also note to change your monitor positions and everything regarding i3 for your own system.
 
