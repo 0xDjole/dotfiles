@@ -164,7 +164,7 @@ To initilize our linux instalation on our partition that is mount
 
 - Install all of the required packages with pacman ( some might be missing from the list.
 	```
-	pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh wget
+	pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation rustup nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh wget
 	```
 
 - Copy <code>.zshrc</code> from repo to <code>**$HOME**/.zshrc</code> for ZSH Shell.
@@ -264,7 +264,7 @@ To initilize our linux instalation on our partition that is mount
 	```
 	yay -S google-chrome bumblebee-status libinput-gestures
 	```
-	We will also install nvm to manage our node versions.
+We will also install nvm to manage our node versions.
 	```
 	git clone http://github.com/creationix/nvm.git .nvm
 	```
