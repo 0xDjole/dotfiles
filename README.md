@@ -107,69 +107,70 @@ By the time you are watching this, there will be new versions. Choose the newest
   
   
 - Out first boot partition is going to be **FAT** type
-```
-mkfs.fat -F32 /dev/{ Device name partition 1 }
-```
+	```
+	mkfs.fat -F32 /dev/{ Device name partition 1 }
+	```
 
 - Adding swap parition
-```
-mkswap /dev/{ Device name partition 2 }
-```
+	```
+	mkswap /dev/{ Device name partition 2 }
+	```
 
 - Turning the swap on
-```
-swapon /dev/{ Device name partition 2 }
-```
+	```
+	swapon /dev/{ Device name partition 2 }
+	```
 
 - Filesystem partition is gonna be **EXT4**
-```
-mkfs.ext4 /dev/{ Device name partition 3 }
-```
+	```
+	mkfs.ext4 /dev/{ Device name partition 3 }
+	```
 
 - Then we mount our filesystem partition to <code>/mnt</code> path
-```
-mount /dev/{ Device name partition 3 } /mnt
-```
+	```
+	mount /dev/{ Device name partition 3 } /mnt
+	```
 
 - Now we need install linux on our <code>/mnt</code> path.
 To initilize our linux instalation on our partition that is mount
-```
-pacstrap /mnt base linux linux-firmware
-```
+	```
+	pacstrap /mnt base linux linux-firmware
+	```
 
 - Genfstab our <code>/mnt</code>
-```
-genfstab -U /mnt >> /mnt/etc/fstab
-```
+	```
+	genfstab -U /mnt >> /mnt/etc/fstab
+	```
 
 - Finally let's enter our <code>/mnt</code> as arch installation.
-```
-arch-chroot /mnt
-```
+	```
+	arch-chroot /mnt
+	```
 
 - Find your zone. It should be close to your location at least.
-```
-ls /usr/share/zoneinfo
-```
+	```
+	ls /usr/share/zoneinfo
+	```
+	
 - Then we set it up simply by:
-```
-ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
-```
+	```
+	ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
+	```
 
 - Let's check is our clock is correct.
-```
-hwclock --systohc
-```
+	```
+	hwclock --systohc
+	```
 
 - Install all of the required packages with pacman ( some might be missing from the list.
-```
-pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh
-```
+	```
+	pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nautilus code flameshot alacritty i3-gaps i3blocks i3lock i3status noto-fonts ttf-font-awesome ttf-dejavu ttf-liberation nodejs npm alsa-utils bc rofi wmctrl xdotool ripgrep zsh
+	```
 
 - Add <code>.zshrc</code>
-```
-nvim ~/.zshrc && source ~/.zshrc ( check out my .zshrc file ) 
-```
+	```
+	nvim ~/.zshrc && source ~/.zshrc ( check out my .zshrc file ) 
+	```
 
 - Now we uncomment <code>en-US</code> language so our Linux system displays all the text in that language.
 	```
