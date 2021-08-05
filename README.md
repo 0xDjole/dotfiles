@@ -172,29 +172,29 @@ nvim ~/.zshrc && source ~/.zshrc ( check out my .zshrc file )
 ```
 
 - Now we uncomment <code>en-US</code> language so our Linux system displays all the text in that language.
-```
-vim /etc/locale.gen ( uncomment line 177 )
-```
-Then we reload:
-```
-locale-gen
-```
+	```
+	vim /etc/locale.gen ( uncomment line 177 )
+	```
+	Then we reload:
+	```
+	locale-gen
+	```
 
 - Set the hostname.
-```
-vim /etc/hostname
-```
-Then simply write wanted **hostname**. I recomment "arch".
+	```
+	vim /etc/hostname
+	```
+	Then simply write wanted **hostname**. I recomment "arch".
 
 - Set the hosts
-```
-vim /etc/hosts
-```
-```
-     127.0.0.1 		localhost
-     ::1 		localhost
-     127.0.1.1 		${hostname}.localdomain	${hostname}
-```
+	```
+	vim /etc/hosts
+	```
+	```
+	     127.0.0.1 		localhost
+	     ::1 		localhost
+	     127.0.1.1 		${hostname}.localdomain	${hostname}
+	```
 - Set the root password
 	```
 	passwd
