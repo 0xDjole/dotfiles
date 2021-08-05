@@ -169,7 +169,7 @@ To initilize our linux instalation on our partition that is mount
 
 - Add <code>.zshrc</code>
 	```
-	nvim ~/.zshrc && source ~/.zshrc ( check out my .zshrc file ) 
+	nvim **HOME**/.zshrc && source **HOME**/.zshrc ( check out my .zshrc file ) 
 	```
 
 - Now we uncomment <code>en-US</code> language so our Linux system displays all the text in that language.
@@ -252,10 +252,10 @@ To initilize our linux instalation on our partition that is mount
 	git clone http://github.com/creationix/nvm.git .nvm
 	```
 	```
-	source ~/.nvm/nvm.sh
+	source **HOME**/.nvm/nvm.sh
 	```
 
-- Configure our neovim. Take nvim folder and replace it with your ~/.config/nvim.
+- Configure our neovim. Take nvim folder and replace it with your **HOME**/.config/nvim.
 	Then simply trigger:
 	```
 	nvim
@@ -279,12 +279,12 @@ To initilize our linux instalation on our partition that is mount
 		Option "Tapping" "true"
 	```
 
-- To run **startx** on login take .zlogin file from repo and put it in <code>~/.zlogin</code>
+- To run **startx** on login take .zlogin file from repo and put it in <code>**HOME**/.zlogin</code>
 	```
-	vim ~/.zlogin
+	vim **HOME**/.zlogin
 	```
 
-- To configure alacritty take alacritty.yml file from repo and put it in <code>~/.config/alacritty/</code>
+- To configure alacritty take alacritty.yml file from repo and put it in <code>**HOME**/.config/alacritty/</code>
 
 - Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>. After:
 	```
@@ -292,8 +292,8 @@ To initilize our linux instalation on our partition that is mount
 	```
 	I3 will be calling this <code>exec</code> file.
 
-- Copy <code>i3config</code>. Put it in <code>~/.config/i3/config</code>.
-	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>~/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path. 
+- Copy <code>i3config</code>. Put it in <code>**HOME**/.config/i3/config</code>.
+	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>**HOME**/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path. 
 	Also note to change your monitor positions and everything regarding i3 for your own system. 
 	**I3 file contains sections specific for your system, so a bit work will be rquired.**
 
