@@ -98,5 +98,18 @@ nnoremap <silent> <Leader>f :Rg<CR>
 
 " Git shortcuts
 nnoremap <leader>gd :Gvdiff<Space>
+nnoremap <leader>gl :Gvdiff :0<CR>
+nnoremap <leader>ge :clo<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>ga :vertical Git diff --name-status<Space>
+nnoremap <leader>ga :vertical Git diff --name-status<CR>
+
+" Tab to complete
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
