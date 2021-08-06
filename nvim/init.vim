@@ -9,6 +9,7 @@ call plug#begin()
   Plug 'morhetz/gruvbox'
   Plug 'sheerun/vim-polyglot'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
 set termguicolors
@@ -29,8 +30,9 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
-let g:NERDTreeWinSize=25
-let g:gruvbox_contrast_dark='hard'
+let g:NERDTreeWinSize= 25
+let g:gruvbox_contrast_dark= 'hard'
+let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
 
 colorscheme gruvbox
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
