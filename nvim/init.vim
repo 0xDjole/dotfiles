@@ -1,6 +1,5 @@
 call plug#begin()
   Plug 'preservim/nerdtree'
-  Plug 'ryanoasis/vim-devicons'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -9,6 +8,7 @@ call plug#begin()
   Plug 'vim-airline/vim-airline-themes'
   Plug 'morhetz/gruvbox'
   Plug 'sheerun/vim-polyglot'
+  Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 set termguicolors
@@ -20,7 +20,6 @@ set scrolloff=10
 set ai
 set si
 set clipboard=unnamedplus
-
 
 let mapleader = " "
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer']
