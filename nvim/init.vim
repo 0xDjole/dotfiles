@@ -1,6 +1,3 @@
-syntax on 
-colorscheme onedark
-
 call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'ryanoasis/vim-devicons'
@@ -10,10 +7,11 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'morhetz/gruvbox'
   Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-set nocompatible
+set termguicolors
 set encoding=UTF-8
 set background=dark
 set nu
@@ -23,21 +21,21 @@ set ai
 set si
 set clipboard=unnamedplus
 
+
 let mapleader = " "
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer']
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
-let g:onedark_termcolors=256
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 let g:NERDTreeWinSize=25
+let g:gruvbox_contrast_dark='hard'
 
+colorscheme gruvbox
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
 function! s:CloseIfOnlyNerdTreeLeft()
   if exists("t:NERDTreeBufName")
     if bufwinnr(t:NERDTreeBufName) != -1
