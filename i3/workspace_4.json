@@ -1,0 +1,43 @@
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 720,
+       "width": 1280,
+       "x": 569,
+       "y": 209
+    },
+    "marks": [],
+    "name": "Lidija_A - Discord",
+    "percent": 0.5,
+    "swallows": [
+       {
+            "class": "^discord$",
+            "instance": "^discord$"
+       }
+    ],
+    "type": "con"
+}
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1045,
+       "width": 1916,
+       "x": 2,
+       "y": 16
+    },
+    "marks": [],
+    "name": "Slack | backend-daily | uniqCast",
+    "percent": 0.5,
+    "swallows": [
+       {
+            "class": "^Slack$",
+            "instance": "^slack$"
+       }
+    ],
+    "type": "con"
+}
+
