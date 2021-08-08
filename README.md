@@ -300,8 +300,9 @@ We will also install nvm to manage our node versions.
 	```
 	vim $HOME/.zlogin
 	```
-
 - To configure alacritty take alacritty.yml file from repo and put it in <code>**$HOME**/.config/alacritty/</code>
+
+- To configure neofetch take neofetch folder from repo and put it in <code>**$HOME**/.config</code>
 
 - Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>. After:
 	```
