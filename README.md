@@ -72,14 +72,14 @@ By the time you are watching this, there will be new versions. Choose the newest
 		
 	Partition size <code>+550M</code>
 	
-	Create swap partition
+	Create swap partition ( Good practice to have it double the size of RAM )
 	```
 	n 
 	```
 	
 	Partition number <code>2</code>
 		
-	Partition size <code>+2G</code>
+	Partition size <code>+30G</code>
 	
 	Create filesystem partition
 	```
