@@ -40,3 +40,5 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+neofetch
