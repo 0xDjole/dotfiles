@@ -272,7 +272,7 @@ We will also install nvm to manage our node versions.
 	source $HOME/.nvm/nvm.sh
 	```
 
-- Configure our neovim. Take nvim folder and replace it with your <code**$HOME**/.config/nvim</code>.
+- Configure our neovim. Take nvim folder and replace it with your <code>**$HOME**/.config/nvim</code>.
 	Then simply trigger:
 	```
 	nvim
@@ -310,7 +310,7 @@ We will also install nvm to manage our node versions.
 	```
 	I3 will be calling this <code>exec</code> file.
 
-- Copy <code>i3/code> folder. Put it in <code>**$HOME**/.config</code>.
+- Copy <code>i3</code> folder. Put it in <code>**$HOME**/.config</code>.
 	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>**$HOME**/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path. 
 	Also note to change your monitor positions and everything regarding i3 for your own system. 
 	**I3 file contains sections specific for your system, so a bit work will be rquired.**
