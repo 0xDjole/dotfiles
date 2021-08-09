@@ -10,6 +10,7 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 set termguicolors

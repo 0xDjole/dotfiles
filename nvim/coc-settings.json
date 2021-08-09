@@ -9,5 +9,7 @@
     "javascript.jsx",
     "rust"
   ],
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true
 }
