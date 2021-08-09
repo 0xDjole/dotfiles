@@ -24,7 +24,7 @@ set si
 set clipboard=unnamedplus
 
 let mapleader = " "
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer', 'coc-svelte']
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:NERDTreeShowHidden = 1
