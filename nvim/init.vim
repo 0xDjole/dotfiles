@@ -75,7 +75,7 @@ nnoremap <silent> <leader>, :vertical resize -5<CR>
 nnoremap <silent> <leader>. :vertical resize +5<CR>
 nnoremap <silent> <leader>e :$<CR>
 nnoremap <silent> <leader>r :0<CR>
-nnoremap <silent> V <C-v>
+nnoremap <silent> vv <C-v>
 nnoremap <silent> <Tab> :bnext<CR>
 nnoremap <silent> <S-Tab> :bprevious<CR>
 
