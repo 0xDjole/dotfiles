@@ -10,6 +10,7 @@
     "rust",
     "svelte"
   ],
+  "eslint.validate": ["javascript","typescript","svelte"],
   "eslint.autoFixOnSave": true,
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true
