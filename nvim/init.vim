@@ -95,11 +95,9 @@ nnoremap <silent> <leader>p :FZF<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 
 " Git shortcuts
-nnoremap <leader>gd :Gvdiff<Space>
-nnoremap <leader>gl :Gvdiff :0<CR>
-nnoremap <leader>ge :clo<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>ga :vertical Git diff --name-status<CR>
+nnoremap <leader>gf :diffget //2<CR>
+nnoremap <leader>gh :diffget //3<CR>
+nnoremap <leader>gs :G<CR>
 
 " Tab to complete
 function! s:check_back_space() abort
