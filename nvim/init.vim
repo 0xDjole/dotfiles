@@ -1,8 +1,12 @@
 call plug#begin()
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'glepnir/lspsaga.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
   Plug 'preservim/nerdtree'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -23,9 +27,9 @@ set scrolloff=10
 set ai
 set si
 set clipboard=unnamedplus
+set completeopt=menuone,noinsert,noselect
 
 let mapleader = " "
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-rust-analyzer', 'coc-svelte']
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:NERDTreeShowHidden = 1
@@ -49,15 +53,9 @@ function! s:CloseIfOnlyNerdTreeLeft()
   endif
 endfunction
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Basic shortcuts 
 nnoremap <silent> <leader>w <C-w>w
@@ -83,29 +81,16 @@ nnoremap <silent> <S-Tab> :bprevious<CR>
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 
-" GoTo code shortcuts.
-nmap <silent> gh :call <SID>show_documentation()<CR>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 " Searching shortcuts
-nnoremap <silent> <leader>p :FZF<CR>
-nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <leader>p <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader>f <cmd>Telescope live_grep<cr>
+nnoremap <silent> <leader>b <cmd>Telescope buffers<cr>
+nnoremap <silent> <leader>? <cmd>Telescope help_tags<cr>
 
 " Git shortcuts
 nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gh :diffget //3<CR>
 nnoremap <leader>gs :G<CR>
 
-" Tab to complete
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+lua require('lsp_config')
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
