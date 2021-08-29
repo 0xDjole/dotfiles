@@ -81,6 +81,12 @@ nnoremap <silent> <S-Tab> :bprevious<CR>
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 
+" LSP Saga shortcuts
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
+
 " Searching shortcuts
 nnoremap <silent> <leader>p <cmd>Telescope find_files<cr>
 nnoremap <silent> <leader>f <cmd>Telescope live_grep<cr>

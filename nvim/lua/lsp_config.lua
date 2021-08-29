@@ -21,8 +21,6 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
-  buf_set_keymap('n', 'gh', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 end
 
 local saga = require 'lspsaga'
