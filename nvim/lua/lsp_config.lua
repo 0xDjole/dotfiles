@@ -109,4 +109,5 @@ lsp.diagnosticls.setup {
 lsp.rust_analyzer.setup{ on_attach = on_attach }
 lsp.tsserver.setup{ on_attach = on_attach }
 lsp.svelte.setup{ on_attach = on_attach }
+lsp.pyright.setup{ on_attach = on_attach }
 
