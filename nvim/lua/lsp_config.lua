@@ -101,7 +101,7 @@ lsp.diagnosticls.setup {
       typescriptreact = 'eslint_d',
       json = 'prettier',
       markdown = 'prettier',
-      svelte = 'eslint'
+      svelte = 'eslint_d'
     }
   }
 }
