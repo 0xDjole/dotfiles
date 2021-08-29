@@ -48,7 +48,7 @@ require('telescope').setup{
 
 lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'svlete', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'svelte', 'css', 'less', 'scss', 'markdown', 'pandoc' },
   init_options = {
     linters = {
       eslint = {
