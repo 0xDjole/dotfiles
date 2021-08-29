@@ -48,7 +48,7 @@ require('telescope').setup{
 
 lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'svlete', 'css', 'less', 'scss', 'markdown', 'pandoc' },
   init_options = {
     linters = {
       eslint = {
@@ -77,6 +77,7 @@ lsp.diagnosticls.setup {
       javascriptreact = 'eslint',
       typescript = 'eslint',
       typescriptreact = 'eslint',
+      svlete = 'eslint'
     },
     formatters = {
       eslint_d = {
@@ -100,10 +101,12 @@ lsp.diagnosticls.setup {
       typescriptreact = 'eslint_d',
       json = 'prettier',
       markdown = 'prettier',
+      svelte = 'eslint'
     }
   }
 }
 
 lsp.rust_analyzer.setup{ on_attach = on_attach }
 lsp.tsserver.setup{ on_attach = on_attach }
+lsp.svelte.setup{ on_attach = on_attach }
 
