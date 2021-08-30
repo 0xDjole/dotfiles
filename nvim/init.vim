@@ -97,4 +97,3 @@ nnoremap <leader>gh :diffget //3<CR>
 nnoremap <leader>gs :G<CR>
 
 lua require('lsp_config')
-

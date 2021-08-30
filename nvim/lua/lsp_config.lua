@@ -104,6 +104,15 @@ lsp.diagnosticls.setup {
   }
 }
 
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false
+  },
+}
+
 lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
 lsp.tsserver.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
 lsp.svelte.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
