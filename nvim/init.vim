@@ -10,8 +10,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'morhetz/gruvbox'
-  Plug 'sheerun/vim-polyglot'
+  Plug 'navarasu/onedark.nvim'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
@@ -28,8 +27,9 @@ set si
 set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect
 
+let g:onedark_style = 'deep'  " We need add the configs before colorscheme line
 let mapleader = " "
-let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
@@ -39,8 +39,9 @@ let g:NERDTreeWinSize= 25
 let g:gruvbox_contrast_dark= 'hard'
 let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
 let g:coq_settings = { 'auto_start': 'shut-up', 'clients.paths.resolution': ["file"] }
+let g:onedark_transparent_background = 1
 
-colorscheme gruvbox
+colorscheme onedark
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 function! s:CloseIfOnlyNerdTreeLeft()
