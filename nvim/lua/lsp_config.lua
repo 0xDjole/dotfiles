@@ -1,12 +1,10 @@
 local lsp = require('lspconfig')
-local completion = require('completion')
+local coq = require "coq" 
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
-  completion.on_attach(client, bufnr)
 
    if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
@@ -106,8 +104,8 @@ lsp.diagnosticls.setup {
   }
 }
 
-lsp.rust_analyzer.setup{ on_attach = on_attach }
-lsp.tsserver.setup{ on_attach = on_attach }
-lsp.svelte.setup{ on_attach = on_attach }
-lsp.pyright.setup{ on_attach = on_attach }
-
+lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+lsp.tsserver.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+lsp.svelte.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+lsp.pyright.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+lsp.tailwindcss.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))

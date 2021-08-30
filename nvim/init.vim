@@ -1,6 +1,6 @@
 call plug#begin()
   Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/completion-nvim'
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/popup.nvim'
@@ -38,6 +38,7 @@ let g:NERDTreeStatusline = ''
 let g:NERDTreeWinSize= 25
 let g:gruvbox_contrast_dark= 'hard'
 let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
+let g:coq_settings = { 'auto_start': 'shut-up' }
 
 colorscheme gruvbox
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
