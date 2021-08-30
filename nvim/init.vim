@@ -38,7 +38,7 @@ let g:NERDTreeStatusline = ''
 let g:NERDTreeWinSize= 25
 let g:gruvbox_contrast_dark= 'hard'
 let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
-let g:coq_settings = { 'auto_start': 'shut-up' }
+let g:coq_settings = { 'auto_start': 'shut-up', 'clients.paths.resolution': ["file"] }
 
 colorscheme gruvbox
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
@@ -52,9 +52,7 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" Use <Tab> and <S-Tab> to navigate through popup menu inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Basic shortcuts 
