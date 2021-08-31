@@ -1,5 +1,5 @@
 local nvim_lsp = require 'lspconfig'
-local coq = require 'coq'
+local compe = require 'compe'
 local saga = require 'lspsaga'
 local telescope = require 'telescope'
 local telescope_actions = require 'telescope.actions'
@@ -101,18 +101,40 @@ treesitter_configs.setup {
   },
 }
 
-nvim_lsp.tsserver.setup {
-    on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        on_attach(client)
-    end
+nvim_lsp.tsserver.setup { on_attach = on_attach }
+
+nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
+
+nvim_lsp.svelte.setup { on_attach = on_attach }
+
+nvim_lsp.pyright.setup { on_attach = on_attach }
+
+nvim_lsp.tailwindcss.setup { on_attach = on_attach }
+
+compe.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = false;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
 }
-
-nvim_lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
-
-nvim_lsp.svelte.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
-
-nvim_lsp.pyright.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
-
-nvim_lsp.tailwindcss.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
-

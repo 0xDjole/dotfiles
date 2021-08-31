@@ -1,6 +1,6 @@
 call plug#begin()
   Plug 'neovim/nvim-lspconfig'
-  Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+  Plug 'hrsh7th/nvim-compe'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/popup.nvim'
