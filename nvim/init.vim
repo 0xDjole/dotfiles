@@ -14,6 +14,7 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 set termguicolors
