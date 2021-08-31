@@ -25,55 +25,12 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
 
     if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_exec([[
-         augroup LspAutocommands
-             autocmd! * <buffer>
-             autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting() 
-         augroup END
-         ]], true)
-    end
+        vim.api.nvim_command [[augroup Format]]
+        vim.api.nvim_command [[autocmd! * <buffer>]]
+        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+        vim.api.nvim_command [[augroup END]]
+  end
 end
-
-local filetypes = {
-    typescript = "eslint",
-    typescriptreact = "eslint",
-}
-local linters = {
-    eslint = {
-        sourceName = "eslint",
-        command = "eslint_d",
-        rootPatterns = {".eslintrc.js", "package.json"},
-        debounce = 100,
-        args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
-        parseJson = {
-            errorsRoot = "[0].messages",
-            line = "line",
-            column = "column",
-            endLine = "endLine",
-            endColumn = "endColumn",
-            message = "${message} [${ruleId}]",
-            security = "severity"
-        },
-        securities = {[2] = "error", [1] = "warning"}
-    }
-}
-local formatters = {
-    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
-}
-local formatFiletypes = {
-    typescript = "prettier",
-    typescriptreact = "prettier"
-}
-nvim_lsp.diagnosticls.setup {
-    on_attach = on_attach,
-    filetypes = vim.tbl_keys(filetypes),
-    init_options = {
-        filetypes = filetypes,
-        linters = linters,
-        formatters = formatters,
-        formatFiletypes = formatFiletypes
-    }
-}
 
 saga.init_lsp_saga {
   error_sign = '',
@@ -95,21 +52,15 @@ telescope.setup{
 
 treesitter_configs.setup {
   ensure_installed = "maintained",
+  indent = {
+    enable = false,
+    disable = {},
+  },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false
   },
 }
-
-nvim_lsp.tsserver.setup { on_attach = on_attach }
-
-nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
-
-nvim_lsp.svelte.setup { on_attach = on_attach }
-
-nvim_lsp.pyright.setup { on_attach = on_attach }
-
-nvim_lsp.tailwindcss.setup { on_attach = on_attach }
 
 compe.setup {
   enabled = true;
@@ -124,7 +75,6 @@ compe.setup {
   max_kind_width = 100;
   max_menu_width = 100;
   documentation = false;
-
   source = {
     path = true;
     buffer = true;
@@ -137,4 +87,67 @@ compe.setup {
     snippets_nvim = true;
     treesitter = true;
   };
+}
+
+nvim_lsp.tsserver.setup {
+    on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client)
+    end
+}
+
+nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
+
+nvim_lsp.svelte.setup { on_attach = on_attach }
+
+nvim_lsp.pyright.setup { on_attach = on_attach }
+
+nvim_lsp.tailwindcss.setup { on_attach = on_attach }
+
+local filetypes = {
+    typescript = "eslint",
+    typescriptreact = "eslint",
+}
+
+local linters = {
+    eslint = {
+        sourceName = "eslint",
+        command = "eslint_d",
+        rootPatterns = {".eslintrc.js", "package.json"},
+        debounce = 100,
+        args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+        parseJson = {
+            errorsRoot = "[0].messages",
+            line = "line",
+            column = "column",
+            endLine = "endLine",
+            endColumn = "endColumn",
+            message = "${message} [${ruleId}]",
+            security = "severity"
+        },
+        securities = {[2] = "error", [1] = "warning"}
+    }
+}
+
+local formatters = {
+    prettier = {
+        command = 'node_modules/.bin/prettier',
+        args = {  '--stdin-filepath', '%filepath' },
+        rootPatterns = {"package.json"},
+    }
+}
+
+local formatFiletypes = {
+    typescript = "prettier",
+    typescriptreact = "prettier"
+}
+nvim_lsp.diagnosticls.setup {
+    on_attach = on_attach,
+    filetypes = vim.tbl_keys(filetypes),
+    init_options = {
+        filetypes = filetypes,
+        linters = linters,
+        formatters = formatters,
+        formatFiletypes = formatFiletypes
+    }
 }
