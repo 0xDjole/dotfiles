@@ -21,8 +21,8 @@ vim.lsp.handlers["textDocument/formatting"] = format_async
 local on_attach = function(client, bufnr)
     local buf_map = vim.api.nvim_buf_set_keymap
 
-    buf_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {silent = true})
-    buf_map(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {silent = true})
+    buf_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
+    buf_map(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_exec([[
