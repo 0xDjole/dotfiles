@@ -1,5 +1,9 @@
-local nvim_lsp = require("lspconfig")
-local coq = require("coq")
+local nvim_lsp = require 'lspconfig'
+local coq = require 'coq'
+local saga = require 'lspsaga'
+local telescope = require 'telescope'
+local telescope_actions = require 'telescope.actions'
+local treesitter_configs = require 'nvim-treesitter.configs'
 
 local format_async = function(err, _, result, _, bufnr)
     if err ~= nil or result == nil then return end
@@ -17,10 +21,8 @@ vim.lsp.handlers["textDocument/formatting"] = format_async
 local on_attach = function(client, bufnr)
     local buf_map = vim.api.nvim_buf_set_keymap
 
-    buf_map(bufnr, "n", "gd", "lua vim.lsp.buf.definition()", {silent = true})
-    buf_map(bufnr, "n", "gr", "lua vim.lsp.buf.references()", {silent = true})
-    buf_map(bufnr, "n", "gt", "lua vim.lsp.buf.type_definition()", {silent = true})
-    buf_map(bufnr, "n", "K", "lua vim.lsp.buf.hover()", {silent = true})
+    buf_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {silent = true})
+    buf_map(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {silent = true})
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_exec([[
@@ -73,7 +75,25 @@ nvim_lsp.diagnosticls.setup {
     }
 }
 
-require'nvim-treesitter.configs'.setup {
+saga.init_lsp_saga {
+  error_sign = '',
+  warn_sign = '',
+  hint_sign = '',
+  infor_sign = '',
+  border_style = "round",
+}
+
+telescope.setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = telescope_actions.close
+      },
+    },
+  }
+}
+
+treesitter_configs.setup {
   ensure_installed = "maintained",
   highlight = {
     enable = true,
@@ -87,8 +107,12 @@ nvim_lsp.tsserver.setup {
         on_attach(client)
     end
 }
+
 nvim_lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+
 nvim_lsp.svelte.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+
 nvim_lsp.pyright.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
+
 nvim_lsp.tailwindcss.setup(coq.lsp_ensure_capabilities({ on_attach = on_attach }))
 
