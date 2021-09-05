@@ -39,7 +39,6 @@ let g:NERDTreeStatusline = ''
 let g:NERDTreeWinSize= 25
 let g:gruvbox_contrast_dark= 'hard'
 let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
-let g:coq_settings = { 'auto_start': 'shut-up', 'clients.paths.resolution': ["file"] }
 let g:onedark_transparent_background = 1
 
 colorscheme onedark
@@ -80,13 +79,6 @@ nnoremap <silent> <S-Tab> :bprevious<CR>
 " NerdTree shortcuts
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
-
-" LSP Saga shortcuts
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
-nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
-nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " Searching shortcuts
 nnoremap <silent> <leader>p <cmd>Telescope find_files<cr>
