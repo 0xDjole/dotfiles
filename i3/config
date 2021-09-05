@@ -167,5 +167,4 @@ exec --no-startup-id sleep 2 && xrandr --output eDP-1 --above DP-1 && xrandr --o
 
 exec --no-startup-id /usr/bin/nitrogen --set-auto ~/.config/i3/arch.png --head=0 && /usr/bin/nitrogen --set-scaled ~/.config/i3/arch.png --head=1
 
-bindsym $mod+x exec "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
-
+bindsym $mod+x exec "rofi -show drun -theme Monokai"
