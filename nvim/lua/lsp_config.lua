@@ -1,6 +1,5 @@
 local nvim_lsp = require 'lspconfig'
 local compe = require 'compe'
-local saga = require 'lspsaga'
 local telescope = require 'telescope'
 local telescope_actions = require 'telescope.actions'
 local treesitter_configs = require 'nvim-treesitter.configs'
@@ -22,13 +21,10 @@ local on_attach = function(client, bufnr)
     local buf_map = vim.api.nvim_buf_set_keymap
 
     buf_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "ge", "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gt", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gr", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gj", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gw", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gs", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", { silent = true })
-    buf_map(bufnr, 'n', "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", { silent = true })
+    buf_map(bufnr, 'n', "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", { silent = true })
+    buf_map(bufnr, 'n', "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
+    buf_map(bufnr, 'n', "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
+    buf_map(bufnr, 'n', "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_command [[augroup Format]]
@@ -37,14 +33,6 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_command [[augroup END]]
   end
 end
-
-saga.init_lsp_saga {
-  error_sign = '',
-  warn_sign = '',
-  hint_sign = '',
-  infor_sign = '',
-  border_style = "round",
-}
 
 telescope.setup{
   defaults = {
