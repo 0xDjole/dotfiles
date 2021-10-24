@@ -15,16 +15,30 @@ local format_async = function(err, _, result, _, bufnr)
         end
     end
 end
+
 vim.lsp.handlers["textDocument/formatting"] = format_async
+
+local border = {
+    {"╭", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╮", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"╯", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╰", "FloatBorder"},
+    {"│", "FloatBorder"}, 
+}
 
 local on_attach = function(client, bufnr)
     local buf_map = vim.api.nvim_buf_set_keymap
 
-    buf_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
-    buf_map(bufnr, 'n', "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
+    vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+
+    buf_map(bufnr, "n", "gd", '<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+    buf_map(bufnr, 'n', "ge", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
+    buf_map(bufnr, 'n', "gr", '<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
+    buf_map(bufnr, 'n', "gt", '<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true })
+    buf_map(bufnr, 'n', "gh", '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_command [[augroup Format]]
