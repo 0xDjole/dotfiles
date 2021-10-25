@@ -16,8 +16,6 @@ local format_async = function(err, _, result, _, bufnr)
     end
 end
 
-vim.lsp.handlers["textDocument/formatting"] = format_async
-
 local border = {
     {"╭", "FloatBorder"},
     {"─", "FloatBorder"},
@@ -29,16 +27,27 @@ local border = {
     {"│", "FloatBorder"}, 
 }
 
+vim.lsp.handlers["textDocument/formatting"] = format_async
+vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+
 local on_attach = function(client, bufnr)
-    local buf_map = vim.api.nvim_buf_set_keymap
 
-    vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    buf_map(bufnr, "n", "gd", '<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
-    buf_map(bufnr, 'n', "ge", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { silent = true })
-    buf_map(bufnr, 'n', "gr", '<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
-    buf_map(bufnr, 'n', "gt", '<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true })
-    buf_map(bufnr, 'n', "gh", '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
+    -- Enable completion triggered by <c-x><c-o>
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+
+    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', 'ge', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_command [[augroup Format]]
@@ -110,8 +119,6 @@ nvim_lsp.svelte.setup { on_attach = on_attach }
 
 nvim_lsp.pyright.setup { on_attach = on_attach }
 
-nvim_lsp.tailwindcss.setup { on_attach = on_attach }
-
 local filetypes = {
     typescript = "eslint",
     typescriptreact = "eslint",
@@ -149,6 +156,7 @@ local formatFiletypes = {
     typescript = "prettier",
     typescriptreact = "prettier"
 }
+
 nvim_lsp.diagnosticls.setup {
     on_attach = on_attach,
     filetypes = vim.tbl_keys(filetypes),
