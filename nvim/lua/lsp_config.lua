@@ -1,5 +1,6 @@
 local nvim_lsp = require 'lspconfig'
-local compe = require 'compe'
+local cmp = require'cmp'
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local telescope = require 'telescope'
 local telescope_actions = require 'telescope.actions'
 local treesitter_configs = require 'nvim-treesitter.configs'
@@ -79,45 +80,47 @@ treesitter_configs.setup {
   },
 }
 
-compe.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = false;
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
-  };
-}
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
 
 nvim_lsp.tsserver.setup {
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
         on_attach(client)
-    end
+    end,
+    capabilities = capabilities
 }
 
-nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
+nvim_lsp.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities }
 
-nvim_lsp.svelte.setup { on_attach = on_attach }
+nvim_lsp.svelte.setup { on_attach = on_attach, capabilities = capabilities }
 
-nvim_lsp.pyright.setup { on_attach = on_attach }
+nvim_lsp.pyright.setup { on_attach = on_attach, capabilities = capabilities }
 
 local filetypes = {
     typescript = "eslint",
