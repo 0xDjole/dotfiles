@@ -28,6 +28,9 @@ set ai
 set si
 set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 let g:onedark_style = 'deep'  " We need add the configs before colorscheme line
 let mapleader = " "
