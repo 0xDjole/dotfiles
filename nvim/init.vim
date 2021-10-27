@@ -26,7 +26,6 @@ set nuw=1
 set scrolloff=10
 set ai
 set si
-set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect
 set tabstop=4
 set shiftwidth=4
@@ -57,8 +56,6 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
-" Use <Tab> and <S-Tab> to navigate through popup menu inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Basic shortcuts 
 nnoremap <silent> <leader>w <C-w>w
@@ -76,7 +73,6 @@ nnoremap <silent> <leader>, :vertical resize -5<CR>
 nnoremap <silent> <leader>. :vertical resize +5<CR>
 nnoremap <silent> <leader>e :$<CR>
 nnoremap <silent> <leader>r :0<CR>
-nnoremap <silent> vv <C-v>
 nnoremap <silent> <Tab> :bnext<CR>
 nnoremap <silent> <S-Tab> :bprevious<CR>
 
