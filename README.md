@@ -182,6 +182,10 @@
   ```
   pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo code flameshot alacritty i3-gaps i3blocks i3lock i3status rustup alsa-utils bc rofi wmctrl xdotool ripgrep zsh wget noto-fonts neofetch net-tools rust-analyzer
   ```
+- Install zshrc
+```
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
 - Copy <code>.zshrc</code> from repo to <code>**$HOME**/.zshrc</code> for ZSH Shell.
 
