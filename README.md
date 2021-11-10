@@ -362,6 +362,5 @@ Install npm global packages
 umount -I /mnt
 
 ```
-
 All that is left is to <code>reboot</code> and enjoy.
 ```
