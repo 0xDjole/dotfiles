@@ -45,7 +45,7 @@
 
 - Setup the time
   ```
-  timedatectl set-ntp
+  timedatectl set-ntp true
   ```
   Verift the time:
   ```
