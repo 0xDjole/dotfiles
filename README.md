@@ -318,9 +318,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
   `git clone http://github.com/creationix/nvm.git .nvm`
   `source $HOME/.nvm/nvm.sh`
 
-Install npm global packages
+- Install npm global packages
 
-````
+        ```
 	npm install -g typescript typescript-language-server diagnostic-languageserver jest mocha pyright svelte-language-server prettier npm eslint_d
 	```
 - Configure our neovim. Take nvim folder and replace it with your <code>**$HOME**/.config/nvim</code>.
