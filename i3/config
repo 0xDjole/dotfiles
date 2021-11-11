@@ -1,10 +1,6 @@
 set $mod Mod1
 
-font pango:DejaVu Sans Mono 10
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+font pango:DejaVu Sans Mono 5
 
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
@@ -68,7 +64,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10: Helper"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -118,8 +114,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# redshift modes
+bindsym $mod+b mode "$mode_redshift"
+set $mode_redshift Set brightness
+mode "$mode_redshift" {
+    bindsym x exec --no-startup-id "redshift -x", mode "default"
+    bindsym 1 exec --no-startup-id "redshift -P -O 1500 -b 0.7", mode "default"
+    bindsym 2 exec --no-startup-id "redshift -P -O 2000 -b 0.8", mode "default"
+    bindsym 3 exec --no-startup-id "redshift -P -O 3000 -b 0.9", mode "default"
+ 
+    # exit mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# I3 Bar
 bar {
 	colors {
 		separator #444444
@@ -130,41 +139,33 @@ bar {
 		inactive_workspace #CECECE #333333 #f1f1f1
 		urgent_workspace #eb709b #eb709b #ffffff
    	}
-	font pango:Inconsolata 11
+	font pango:Inconsolata 6
 	position top
 	tray_output none
 	status_command /usr/bin/bumblebee-status -m uptime cpu load datetime battery -p time.format="%k:%M" date.format="%A %e %b" datetime.format="%A %e %b %k:%M" -t iceberg-dark-powerline
 }
-
-bindsym $mod+Ctrl+k move workspace to output eDP-1
-bindsym $mod+Ctrl+j move workspace to output DP-1
-
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws10 output DP-1
-
-bindsym $mod+g exec i3-msg "[class=".*"] kill" | ~/.config/i3/load_layout.sh
-
-bindsym $mod+Next exec pactl set-sink-volume 1 -- -10%
-bindsym $mod+Prior exec pactl set-sink-volume 1 -- +10%
-
 client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340                                                                            
 client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
 client.focused          #d88c00 #d88c00 #222222 #d88c00 #d88c00
 
-bindsym XF86MonBrightnessUp exec bright Up
-bindsym XF86MonBrightnessDown exec bright Down
+# Layout
+bindsym $mod+g exec i3-msg "[class=".*"] kill" | ~/.config/i3/load_layout.sh
 
+# Screenshots
 bindsym Print exec flameshot gui
-
 exec --no-startup-id sleep 2 && flameshot
 
+# Enabled tap/click/scroll on touchpad
 exec --no-startup-id sleep 2 && libinput-gestures-setup start
 
-exec --no-startup-id sleep 2 && xrandr --output eDP-1 --above DP-1 && xrandr --output DP-1 --brightness 2 
+#exec --no-startup-id sleep 2 &0& xrandr --output eDP-1
 
-exec --no-startup-id /usr/bin/nitrogen --set-auto ~/.config/i3/arch.png --head=0 && /usr/bin/nitrogen --set-scaled ~/.config/i3/arch.png --head=1
+# Wallpaper
+exec --no-startup-id /usr/bin/nitrogen --set-scaled ~/.config/i3/arch.png
 
+# Lock screen
+exec --no-startup-id betterlockscreen -w dim -u ~/.config/i3/arch.png
+bindsym $mod+shift+x exec betterlockscreen -l dim -u ~/.config/i3/arch.png
+
+# Execute programs
 bindsym $mod+x exec "rofi -show drun -theme Monokai"
