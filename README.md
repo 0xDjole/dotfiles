@@ -180,7 +180,7 @@
 - Install all of the required packages with pacman ( some might be missing from the list.
 
   ```
-  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo code flameshot alacritty i3-gaps i3blocks i3lock i3status rustup alsa-utils bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer
+  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo code flameshot alacritty i3-gaps i3blocks i3lock i3status rustup alsa-utils bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose
   ```
 - Install zshrc
 ```
@@ -213,6 +213,12 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
   and
 
+  ```
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  ```
+  
+  and
+  
   ```
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
   ```
@@ -269,7 +275,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
   We also give him different permissions. Most important is **wheel**. Then we can assume **root** role essentially by running **sudo**.
 
   ```
-  usermod -aG wheel,audio,video,optical,storage,input {username}
+  usermod -aG wheel,audio,video,optical,storage,input,docker {username}
   ```
 
   But we all want to uncomment **wheel all alll** line so **wheel** group acts as godlike group.
@@ -307,7 +313,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 - Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
   `git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd .. && rm -rf yay-git`
   Then we install:
-  `yay -S google-chrome bumblebee-status libinput-gestures nerd-fonts-complete`
+  `yay -S google-chrome bumblebee-status libinput-gestures nerd-fonts-complete mongodb-compass postman-bin`
   We will also install nvm to manage our node versions.
   `git clone http://github.com/creationix/nvm.git .nvm`
   `source $HOME/.nvm/nvm.sh`
