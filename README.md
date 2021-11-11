@@ -251,7 +251,7 @@
   ```
   ```
        127.0.0.1 		localhost
-       ::1 		localhost
+       ::1 		        localhost
        127.0.1.1 		${hostname}.localdomain	${hostname}
   ```
 - Set the root password
@@ -343,8 +343,8 @@
 	```
 	Then add to touchpad section:
 	```
-		Option "NaturalScrolling" "true"
-		Option "Tapping" "true"
+	Option "NaturalScrolling" "true"
+	Option "Tapping" "true"
 	```
 
 - To run **startx** on login take .zlogin file from repo and put it in <code>**$HOME**/.zlogin</code>
@@ -354,12 +354,6 @@
 - To configure alacritty take alacritty.yml file from repo and put it in <code>**$HOME**/.config/alacritty/</code>
 
 - To configure neofetch take neofetch folder from repo and put it in <code>**$HOME**/.config</code>
-
-- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>. After:
-	```
-	chmod a+x /bin/bright
-	```
-	I3 will be calling this <code>exec</code> file.
 
 - Copy <code>i3</code> folder. Put it in <code>**$HOME**/.config</code>.
 	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>**$HOME**/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path.
