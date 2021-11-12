@@ -353,6 +353,8 @@
 	```
 - To configure alacritty take alacritty.yml file from repo and put it in <code>**$HOME**/.config/alacritty/</code>
 
+- To suspend on lid switch change <code>/etc/systemd/logind.conf</code> and uncomment <code>HandleLidSwitch=suspend</code>
+
 - To configure neofetch take neofetch folder from repo and put it in <code>**$HOME**/.config</code>
 
 - Copy <code>i3</code> folder. Put it in <code>**$HOME**/.config</code>.
