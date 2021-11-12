@@ -180,7 +180,11 @@
 - Install all of the required packages with pacman ( some might be missing from the list.
 
   ```
-  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo code flameshot alacritty i3-gaps i3blocks i3lock i3status rustup alsa-utils bc rofi wmctrl xdotool ripgrep zsh wget noto-fonts neofetch net-tools rust-analyzer
+  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo code flameshot alacritty i3-gaps i3blocks i3lock i3status rustup alsa-utils bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift
+  ```
+- Install zshrc
+  ```
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   ```
 
 - Copy <code>.zshrc</code> from repo to <code>**$HOME**/.zshrc</code> for ZSH Shell.
@@ -209,6 +213,12 @@
 
   and
 
+  ```
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  ```
+  
+  and
+  
   ```
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
   ```
@@ -241,7 +251,7 @@
   ```
   ```
        127.0.0.1 		localhost
-       ::1 		localhost
+       ::1 		        localhost
        127.0.1.1 		${hostname}.localdomain	${hostname}
   ```
 - Set the root password
@@ -265,7 +275,7 @@
   We also give him different permissions. Most important is **wheel**. Then we can assume **root** role essentially by running **sudo**.
 
   ```
-  usermod -aG wheel,audio,video,optical,storage,input {username}
+  usermod -aG wheel,audio,video,optical,storage,input,docker {username}
   ```
 
   But we all want to uncomment **wheel all alll** line so **wheel** group acts as godlike group.
@@ -303,14 +313,14 @@
 - Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
   `git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd .. && rm -rf yay-git`
   Then we install:
-  `yay -S google-chrome bumblebee-status libinput-gestures nerd-fonts-complete`
+  `yay -S google-chrome bumblebee-status libinput-gestures nerd-fonts-complete mongodb-compass postman-bin`
   We will also install nvm to manage our node versions.
   `git clone http://github.com/creationix/nvm.git .nvm`
   `source $HOME/.nvm/nvm.sh`
 
-Install npm global packages
+- Install npm global packages
 
-````
+        ```
 	npm install -g typescript typescript-language-server diagnostic-languageserver jest mocha pyright svelte-language-server prettier npm eslint_d
 	```
 - Configure our neovim. Take nvim folder and replace it with your <code>**$HOME**/.config/nvim</code>.
@@ -333,8 +343,8 @@ Install npm global packages
 	```
 	Then add to touchpad section:
 	```
-		Option "NaturalScrolling" "true"
-		Option "Tapping" "true"
+	Option "NaturalScrolling" "true"
+	Option "Tapping" "true"
 	```
 
 - To run **startx** on login take .zlogin file from repo and put it in <code>**$HOME**/.zlogin</code>
@@ -344,12 +354,6 @@ Install npm global packages
 - To configure alacritty take alacritty.yml file from repo and put it in <code>**$HOME**/.config/alacritty/</code>
 
 - To configure neofetch take neofetch folder from repo and put it in <code>**$HOME**/.config</code>
-
-- Bright up/down didn't work for me so take bright file from repo and put it in <code>/bin/bash</code>. After:
-	```
-	chmod a+x /bin/bright
-	```
-	I3 will be calling this <code>exec</code> file.
 
 - Copy <code>i3</code> folder. Put it in <code>**$HOME**/.config</code>.
 	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>**$HOME**/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path.
@@ -362,6 +366,5 @@ Install npm global packages
 umount -I /mnt
 
 ```
-
 All that is left is to <code>reboot</code> and enjoy.
 ```
