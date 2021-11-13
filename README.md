@@ -357,6 +357,20 @@
 
 - To configure neofetch take neofetch folder from repo and put it in <code>**$HOME**/.config</code>
 
+- To autologin
+    ```
+    cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+    ```
+    Then 
+    ```
+    ln -s /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
+    ```
+    and most important change ExecStart line in autologin@.service file
+    ```
+    ExecStart=-/sbin/agetty -a USERNAME %I 38400
+    ```
+
+
 - Copy <code>i3</code> folder. Put it in <code>**$HOME**/.config</code>.
 	Also download **arch.png** from repo if you want to use it as a background. I put my in <code>**$HOME**/Documents</code>, so be sure to tweak i3 config file if your image will be in a different path.
 	Also note to change your monitor positions and everything regarding i3 for your own system.
