@@ -158,8 +158,8 @@ exec --no-startup-id sleep 2 && libinput-gestures-setup start
 exec --no-startup-id /usr/bin/nitrogen --set-scaled ~/.config/i3/arch.png
 
 # Lock screen
-exec --no-startup-id betterlockscreen -w dim -u ~/.config/i3/arch.png
-bindsym $mod+shift+x exec betterlockscreen -w dim -u ~/.config/i3/arch.png
+exec --no-startup-id betterlockscreen -l dim -u ~/.config/i3/arch.png
+bindsym $mod+shift+x exec betterlockscreen -l dim -u ~/.config/i3/arch.png
 
 # Execute programs
 bindsym $mod+x exec "rofi -show drun -theme Monokai"
