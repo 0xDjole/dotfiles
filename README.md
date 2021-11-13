@@ -357,17 +357,17 @@
 
 - To configure neofetch take neofetch folder from repo and put it in <code>**$HOME**/.config</code>
 
-- To autologin
+- To autologin edit:
     ```
-    cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+    sudo nvim /usr/lib/systemd/system/getty@.service
     ```
-    Then 
+    Then
     ```
-    ln -s /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
+    ExecStart=-/sbin/agetty -a USERNAME %I $TERM
     ```
-    and most important change ExecStart line in autologin@.service file
+    Then
     ```
-    ExecStart=-/sbin/agetty -a USERNAME %I 38400
+    ln -sf /usr/lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
     ```
 
 
