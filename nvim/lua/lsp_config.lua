@@ -124,6 +124,7 @@ nvim_lsp.svelte.setup { on_attach = on_attach, capabilities = capabilities }
 nvim_lsp.pyright.setup { on_attach = on_attach, capabilities = capabilities }
 
 local filetypes = {
+    javascript = "eslint",
     typescript = "eslint",
     typescriptreact = "eslint",
 }
@@ -157,6 +158,7 @@ local formatters = {
 }
 
 local formatFiletypes = {
+    javascript = "prettier",
     typescript = "prettier",
     typescriptreact = "prettier"
 }
