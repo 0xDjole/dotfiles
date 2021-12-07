@@ -1,6 +1,10 @@
 set $mod Mod1
 
-font pango:DejaVu Sans Mono 5
+for_window [class=".*"] border pixel 0
+gaps inner 5
+border_radius 2
+  
+font pango:DejaVu Sans Mono 9
 
 # Volume management
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
@@ -115,7 +119,7 @@ bindsym $mod+b mode "$mode_redshift"
 set $mode_redshift Set brightness
 mode "$mode_redshift" {
     bindsym x exec --no-startup-id "redshift -x", mode "default"
-    bindsym 1 exec --no-startup-id "redshift -P -O 1500 -b 0.7", mode "default"
+    bindsym 1 exec --no-startup-id "redshift -P -O 1500 -b 0.5", mode "default"
     bindsym 2 exec --no-startup-id "redshift -P -O 2000 -b 0.8", mode "default"
     bindsym 3 exec --no-startup-id "redshift -P -O 3000 -b 0.9", mode "default"
  
@@ -135,7 +139,7 @@ bar {
 		inactive_workspace #CECECE #333333 #f1f1f1
 		urgent_workspace #eb709b #eb709b #ffffff
    	}
-	font pango:Inconsolata 6
+	font pango:Inconsolata 10
 	position top
 	tray_output none
 	status_command /usr/bin/bumblebee-status -m uptime cpu load datetime battery -p time.format="%k:%M" date.format="%A %e %b" datetime.format="%A %e %b %k:%M" -t iceberg-dark-powerline
@@ -155,11 +159,11 @@ exec --no-startup-id sleep 2 && flameshot
 exec --no-startup-id sleep 2 && libinput-gestures-setup start
 
 # Wallpaper
-exec --no-startup-id /usr/bin/nitrogen --set-scaled ~/.config/i3/arch.png
+exec --no-startup-id /usr/bin/nitrogen --set-auto ~/.config/i3/wallpaper.jpg
 
 # Lock screen
-exec --no-startup-id betterlockscreen -l dim -u ~/.config/i3/arch.png
-bindsym $mod+shift+x exec betterlockscreen -l dim -u ~/.config/i3/arch.png
+exec --no-startup-id betterlockscreen -l dim -u ~/.config/i3/wallpaper.jpg
+bindsym $mod+shift+x exec betterlockscreen -l dim -u ~/.config/i3/wallpaper.jpg
 
 # Execute programs
 bindsym $mod+x exec "rofi -show drun -theme Monokai"
