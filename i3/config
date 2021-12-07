@@ -1,7 +1,8 @@
 set $mod Mod1
 
 for_window [class=".*"] border pixel 0
-gaps inner 5
+gaps inner 10
+
 border_radius 2
   
 font pango:DejaVu Sans Mono 9
