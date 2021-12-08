@@ -7,9 +7,8 @@ alt + Return
 	alacritty
 
 # terminal emulator
-alt + b
+alt + i
 	google-chrome-stable
-
 
 # program launcher
 alt + x
@@ -137,3 +136,5 @@ XF86AudioMute
 Print 
     flameshot gui
 
+alt + b : {x, 1, 2, 3}
+    redshift {-x, -P -O 1500 -b 0.7, -P -O 2000 -b 0.8, -P -O 3000 -b 0.9}
