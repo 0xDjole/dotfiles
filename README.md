@@ -180,7 +180,7 @@
 - Install all of the required packages with pacman ( some might be missing from the list.
 
   ```
-  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo flameshot alacritty sxhkd picom rustup alsa-utils pulseaudio pavucontrol bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift xclip libreoffice-still
+  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo flameshot alacritty sxhkd picom rustup alsa-utils pulseaudio pavucontrol bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift xclip libreoffice-still xdo
   ```
 - Install zshrc
   ```

@@ -18,6 +18,8 @@ bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+bspc config focused_border_color \#ffb52a
+
 bspc rule -a Alacritty:Editor desktop=Editor
 bspc rule -a Alacritty:Terminal1 desktop=Terminal
 bspc rule -a Alacritty:Terminal2 desktop=Terminal
