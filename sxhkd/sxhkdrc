@@ -124,7 +124,7 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-#Volume Control
+# Volume Control
 XF86AudioLowerVolume
 	amixer set Speaker 100% && amixer set Headphone 100% && amixer set Master 5%-
 XF86AudioRaiseVolume
@@ -136,5 +136,10 @@ XF86AudioMute
 Print 
     flameshot gui
 
+# Brightness
 alt + b : {x, 1, 2, 3}
     redshift {-x, -P -O 1500 -b 0.7, -P -O 2000 -b 0.8, -P -O 3000 -b 0.9}
+
+# Restart environment
+alt + g
+    ~/.config/bspwm/start.sh
