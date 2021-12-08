@@ -180,7 +180,7 @@
 - Install all of the required packages with pacman ( some might be missing from the list.
 
   ```
-  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo flameshot alacritty bspwm sxhkd picom rustup alsa-utils pulseaudio pavucontrol bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift xclip libreoffice-still
+  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit nitrogen discord nemo flameshot alacritty sxhkd picom rustup alsa-utils pulseaudio pavucontrol bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift xclip libreoffice-still
   ```
 - Install zshrc
   ```
@@ -313,7 +313,7 @@
 - Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
   `git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd .. && rm -rf yay-git`
   Then we install:
-  `yay -S polybar google-chrome libinput-gestures nerd-fonts-complete mongodb-compass postman-bin betterlockscreen` 
+  `yay -S bspwm-rounded-corners polybar google-chrome libinput-gestures nerd-fonts-complete mongodb-compass postman-bin betterlockscreen` 
   We will also install nvm to manage our node versions.
   `git clone http://github.com/creationix/nvm.git .nvm`
   `source $HOME/.nvm/nvm.sh`
@@ -378,6 +378,8 @@
 - Copy <code>polybar</code> folder. Put it in <code>**$HOME**/.config</code>.
 
 - Copy <code>picom</code> folder. Put it in <code>**$HOME**/.config</code>.
+
+- Copy <code>.xinitrc</code> file. Put it in <code>**$HOME**</code>.
 
 - Finally we unmount and that's it:
 ````
