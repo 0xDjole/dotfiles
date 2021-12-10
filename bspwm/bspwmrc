@@ -1,7 +1,7 @@
 #! /bin/sh
 redshift -P -O 3000 -b 0.9 &
 betterlockscreen -l dim -u ~/.config/bspwm/wallpaper.jpg
-picom --experimental-backends -b &
+picom --experimental-backends &
 nitrogen --set-auto ~/.config/bspwm/wallpaper.jpg &
 flameshot &
 xsetroot -cursor_name left_ptr &
