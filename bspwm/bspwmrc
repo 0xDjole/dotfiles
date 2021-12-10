@@ -10,7 +10,6 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 bspc monitor -d Editor Terminal Browser Communication 'Extra 1' 'Extra 2'
 
 bspc config border_width         1
-bspc config border_radius        10
 bspc config window_gap           10
 bspc config top_padding          27
 
