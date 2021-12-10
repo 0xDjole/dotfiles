@@ -129,24 +129,21 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-full-prefix = "  "
 format-full-prefix-foreground = ${colors.healthy}
 
-animation-charging-0 = " "
-animation-charging-1 = " "
-animation-charging-2 = " "
-animation-charging-3 = " "
-animation-charging-4 = " "
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
 animation-charging-foreground = ${colors.healthy}
 animation-charging-framerate = 750
 
-ramp-capacity-0 = " "
-ramp-capacity-1 = " "
-ramp-capacity-2 = " "
-ramp-capacity-3 = " "
-ramp-capacity-4 = " "
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
 ramp-capacity-0-foreground = ${colors.urgent}
 ramp-capacity-1-foreground = ${colors.warning}
 ramp-capacity-2-foreground = ${colors.ok}
-ramp-capacity-3-foreground = ${colors.ok}
-ramp-capacity-4-foreground = ${colors.healthy}
+ramp-capacity-3-foreground = ${colors.healthy}
 
 
 [settings]
