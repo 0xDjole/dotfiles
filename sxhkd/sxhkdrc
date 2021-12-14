@@ -63,3 +63,7 @@ alt + b : {x, 1, 2, 3}
 # Restart environment
 alt + g
     ~/.config/bspwm/start.sh
+
+# Wifi connect
+alt + w
+    nmcli device wifi rescan && nmcli device wifi connect 'Error'
