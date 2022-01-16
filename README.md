@@ -313,7 +313,7 @@
 - Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
   `git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd .. && rm -rf yay-git`
   Then we install:
-  `yay -S picom-ibhagwan-git polybar google-chrome libinput-gestures nerd-fonts-complete mongodb-compass postman-bin betterlockscreen` 
+  `yay -S picom-jonaburg-git polybar google-chrome libinput-gestures nerd-fonts-complete mongodb-compass postman-bin betterlockscreen` 
   We will also install nvm to manage our node versions.
   `git clone http://github.com/creationix/nvm.git .nvm`
   `source $HOME/.nvm/nvm.sh`
