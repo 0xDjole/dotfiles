@@ -15,7 +15,6 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
-  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 set termguicolors
@@ -46,7 +45,6 @@ let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
 let g:onedark_transparent_background = 1
 
 colorscheme onedark
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 function! s:CloseIfOnlyNerdTreeLeft()
   if exists("t:NERDTreeBufName")
