@@ -109,13 +109,7 @@ cmp.setup({
 })
 
 
-nvim_lsp.tsserver.setup {
-    on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        on_attach(client)
-    end,
-    capabilities = capabilities
-}
+nvim_lsp.tsserver.setup { on_attach = on_attach, capabilities = capabilities }
 
 nvim_lsp.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities }
 

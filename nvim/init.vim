@@ -41,7 +41,6 @@ let g:NERDTreeWinSize= 25
 let g:WebDevIconsDefaultFolderSymbolColor = 'AFAFAF'
 let g:gruvbox_contrast_dark = 'hard'
 
-
 colorscheme gruvbox
 
 function! s:CloseIfOnlyNerdTreeLeft()
