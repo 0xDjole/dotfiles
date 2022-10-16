@@ -26,8 +26,8 @@ set scrolloff=10
 set ai
 set si
 set completeopt=menuone,noinsert,noselect
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set clipboard+=unnamedplus
 

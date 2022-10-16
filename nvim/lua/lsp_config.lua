@@ -3,7 +3,6 @@ local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local telescope = require 'telescope'
 local telescope_actions = require 'telescope.actions'
-local treesitter_configs = require 'nvim-treesitter.configs'
 
 local format_async = function(err, _, result, _, bufnr)
     if err ~= nil or result == nil then return end
@@ -55,7 +54,7 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_command [[autocmd! * <buffer>]]
         vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
         vim.api.nvim_command [[augroup END]]
-  end
+    end
 end
 
 telescope.setup{
@@ -68,15 +67,11 @@ telescope.setup{
   }
 }
 
-treesitter_configs.setup {
-  ensure_installed = "maintained",
-  indent = {
-    enable = false,
-    disable = {},
-  },
+require'nvim-treesitter.configs'.setup {
+  auto_install = true,
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false
+    additional_vim_regex_highlighting = true,
   },
 }
 
