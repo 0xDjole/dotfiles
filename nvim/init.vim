@@ -87,4 +87,8 @@ nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gh :diffget //3<CR>
 nnoremap <leader>gs :G<CR>
 
+
+autocmd BufWritePre *.json %!jq --indent 4 .
+
+
 lua require('lsp_config')
