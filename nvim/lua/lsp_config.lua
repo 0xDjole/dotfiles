@@ -4,18 +4,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local telescope = require 'telescope'
 local telescope_actions = require 'telescope.actions'
 
-local format_async = function(err, _, result, _, bufnr)
-    if err ~= nil or result == nil then return end
-    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-        local view = vim.fn.winsaveview()
-        vim.lsp.util.apply_text_edits(result, bufnr)
-        vim.fn.winrestview(view)
-        if bufnr == vim.api.nvim_get_current_buf() then
-            vim.api.nvim_command("noautocmd :update")
-        end
-    end
-end
-
 local border = {
     {"╭", "FloatBorder"},
     {"─", "FloatBorder"},
@@ -27,15 +15,12 @@ local border = {
     {"│", "FloatBorder"}, 
 }
 
-vim.lsp.handlers["textDocument/formatting"] = format_async
-vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-
 local on_attach = function(client, bufnr)
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    -- Enable completion triggered by <c-x><c-o>
+     -- Enable completion triggered by <c-x><c-o>
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
@@ -49,12 +34,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
+
     if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_command [[augroup Format]]
-        vim.api.nvim_command [[autocmd! * <buffer>]]
-        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-        vim.api.nvim_command [[augroup END]]
-    end
+        vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+     end
 end
 
 telescope.setup{
@@ -118,47 +101,47 @@ local filetypes = {
     typescriptreact = "eslint",
 }
 
-local linters = {
-    eslint = {
-        sourceName = "eslint",
-        command = "eslint_d",
-        rootPatterns = {".eslintrc.js", "package.json"},
-        debounce = 100,
-        args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
-        parseJson = {
-            errorsRoot = "[0].messages",
-            line = "line",
-            column = "column",
-            endLine = "endLine",
-            endColumn = "endColumn",
-            message = "${message} [${ruleId}]",
-            security = "severity"
-        },
-        securities = {[2] = "error", [1] = "warning"}
-    }
-}
-
-local formatters = {
-    prettier = {
-        command = 'node_modules/.bin/prettier',
-        args = {  '--stdin-filepath', '%filepath' },
-        rootPatterns = {"package.json"},
-    }
-}
-
-local formatFiletypes = {
-    javascript = "prettier",
-    typescript = "prettier",
-    typescriptreact = "prettier"
-}
-
-nvim_lsp.diagnosticls.setup {
-    on_attach = on_attach,
-    filetypes = vim.tbl_keys(filetypes),
-    init_options = {
-        filetypes = filetypes,
-        linters = linters,
-        formatters = formatters,
-        formatFiletypes = formatFiletypes
-    }
-}
+-- local linters = {
+--     eslint = {
+--         sourceName = "eslint",
+--         command = "eslint_d",
+--         rootPatterns = {".eslintrc.js", "package.json"},
+--         debounce = 100,
+--         args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+--         parseJson = {
+--             errorsRoot = "[0].messages",
+--             line = "line",
+--             column = "column",
+--             endLine = "endLine",
+--             endColumn = "endColumn",
+--             message = "${message} [${ruleId}]",
+--             security = "severity"
+--         },
+--         securities = {[2] = "error", [1] = "warning"}
+--     }
+-- }
+-- 
+-- local formatters = {
+--     prettier = {
+--         command = 'node_modules/.bin/prettier',
+--         args = {  '--stdin-filepath', '%filepath' },
+--         rootPatterns = {"package.json"},
+--     }
+-- }
+-- 
+-- local formatFiletypes = {
+--     javascript = "prettier",
+--     typescript = "prettier",
+--     typescriptreact = "prettier"
+-- }
+-- 
+-- nvim_lsp.diagnosticls.setup {
+--     on_attach = on_attach,
+--     filetypes = vim.tbl_keys(filetypes),
+--     init_options = {
+--         filetypes = filetypes,
+--         linters = linters,
+--         formatters = formatters,
+--         formatFiletypes = formatFiletypes
+--     }
+-- }
