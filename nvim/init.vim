@@ -16,6 +16,7 @@ call plug#begin()
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
   Plug 'vim-test/vim-test'
+  Plug 'puremourning/vimspector'
 call plug#end()
 
 set termguicolors
@@ -82,6 +83,8 @@ nmap <silent> <leader>te :TestNearest<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 
+
+
 " NerdTree shortcuts
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
@@ -100,5 +103,18 @@ nnoremap <leader>gs :G<CR>
 
 autocmd BufWritePre *.json %!jq --indent 4 .
 
-
 lua require('lsp_config')
+
+nnoremap <Leader>dd :call vimspector#Launch()<CR>
+nnoremap <Leader>de :call vimspector#Reset()<CR>
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nmap <Leader>dk <Plug>VimspectorRestart
+nmap <Leader>dh <Plug>VimspectorStepOut
+nmap <Leader>dl <Plug>VimspectorStepInto
+nmap <Leader>dj <Plug>VimspectorStepOver
+
+let g:vimspector_base_dir='/home/djole/.config/nvim/plugged/vimspector'
