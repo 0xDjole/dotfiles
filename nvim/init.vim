@@ -15,6 +15,7 @@ call plug#begin()
   Plug 'morhetz/gruvbox'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  Plug 'vim-test/vim-test'
 call plug#end()
 
 set termguicolors
@@ -71,6 +72,15 @@ nnoremap <silent> <leader>e :$<CR>
 nnoremap <silent> <leader>r :0<CR>
 nnoremap <silent> <Tab> :bnext<CR>
 nnoremap <silent> <S-Tab> :bprevious<CR>
+
+
+let test#strategy = "neovim"
+nmap <silent> <leader>te :TestNearest<CR>
+" nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
 
 " NerdTree shortcuts
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
