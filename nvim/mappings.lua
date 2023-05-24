@@ -15,6 +15,12 @@ return {
       end,
       desc = "Pick to close",
     },
+
+    ["<leader>tt"] = { ":TestNearest<CR>", desc = "Run nearest test" },
+    ["<leader>tf"] = { ":TestFile<CR>", desc = "Run all tests in file" },
+    ["<leader>ta"] = { ":TestSuite<CR>", desc = "Run all tests in suite" },
+    ["<leader>tl"] = { ":TestLast<CR>", desc = "Run last test again" },
+    ["<leader>tv"] = { ":TestVisit<CR>", desc = "Visit test file" },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
@@ -24,5 +30,6 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+    ["<leader>q"] = { "<C-\\><C-n>:q<CR>", desc = "Close terminal" },
   },
 }
