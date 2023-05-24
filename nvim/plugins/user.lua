@@ -1,6 +1,14 @@
 return {
   {
-  "vim-test/vim-test",
+    "simrat39/rust-tools.nvim", 
+    lazy = false
+  },
+  {
+    "nvim-lua/plenary.nvim",
+    lazy = false
+  },
+  {
+    "vim-test/vim-test",
     lazy = false,  -- or include the necessary conditions for the plugin to be loaded
     -- include any additional configuration here...
   }

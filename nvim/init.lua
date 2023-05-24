@@ -26,7 +26,22 @@ return {
     underline = true,
   },
 
+
+  plugins = {
+    "simrat39/rust-tools.nvim", -- add lsp plugin
+    {
+      "williamboman/mason-lspconfig.nvim",
+      opts = {
+        ensure_installed = { "rust_analyzer" },
+      },
+    },
+  },
+
   lsp = {
+    setup_handlers = {
+      -- add custom handler
+      rust_analyzer = function(_, opts) require("rust-tools").setup { server = opts } end
+    },
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save
@@ -83,3 +98,5 @@ return {
     -- }
   end,
 }
+
+
