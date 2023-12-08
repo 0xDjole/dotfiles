@@ -109,10 +109,6 @@ let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
 "" Key mappings
 "" ========================================================
 
-inoremap jk <Esc>
-
-nnoremap <leader>w :w<CR>
-
 " Tab navigation
 nnoremap ]b :tabnext<CR>
 nnoremap [b :tabprev<CR>
@@ -150,6 +146,7 @@ map <leader>j <Plug>(easymotion-s)
 
 " Open NERDTree (use q to exit)
 map <leader>e :NERDTreeToggle<CR>
+map <leader>o :NERDTreeFind<CR>
 
 " Folding
 map <leader>zc :action CollapseAllRegions<CR>
@@ -210,4 +207,3 @@ nmap eh <Action>(ShowErrorDescription)
 nmap ep <Action>(GotoPreviousError)
 
 nmap r <Action>(Run)
-
