@@ -109,6 +109,8 @@ let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
 "" Key mappings
 "" ========================================================
 
+nnoremap <leader>w :w<CR>
+
 " Tab navigation
 nnoremap ]b :tabnext<CR>
 nnoremap [b :tabprev<CR>
