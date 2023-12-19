@@ -167,7 +167,7 @@ map <leader>df <action>(ToggleFullScreen)
 
 " Actions
 map <leader>am <action>(ShowIntentionActions)
-map <leader>fw <action>(SearchEverywhere)
+map <leader>fw <action>(FindInPath)
 
 " File navigation
 map <leader>ff <action>(GotoFile)
@@ -193,7 +193,7 @@ nmap gh <Action>(QuickJavaDoc)
 nmap gd <Action>(GotoDeclaration)
 nmap gy <Action>(GotoTypeDeclaration)
 nmap gi <Action>(GotoImplementation)
-nmap ge <Action>(ShowUsages)
+nmap gr <Action>(ShowUsages)
 nmap gt <Action>(GotoTest)
 nmap go <Action>(Back)
 nmap gb <Action>(Forward)
@@ -209,3 +209,7 @@ nmap eh <Action>(ShowErrorDescription)
 nmap ep <Action>(GotoPreviousError)
 
 nmap r <Action>(Run)
+
+map <C-v> "+p
+map <C-c> "+y
+
