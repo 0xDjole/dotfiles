@@ -169,6 +169,10 @@ key = "C"
 mods = "Control"
 action = "Copy"
 
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+chars = "\u0003"
 
 [scrolling]
 history = 5000
