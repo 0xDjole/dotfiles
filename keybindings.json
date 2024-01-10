@@ -1,0 +1,42 @@
+[
+    {
+        "key": "tab",
+        "command": "goToNextReferenceFromEmbeddedEditor",
+        "when": "inReferenceSearchEditor"
+    },
+    {
+        "key": "shift+tab",
+        "command": "goToPreviousReferenceFromEmbeddedEditor",
+        "when": "inReferenceSearchEditor"
+    },
+    {
+        "key": "tab",
+        "command": "search.action.focusNextSearchResult",
+        "when": "hasSearchResult"
+    },
+    {
+        "key": "shift+tab",
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "hasSearchResult"
+    },
+    {
+        "key": "tab",
+        "command": "goToNextReference",
+        "when": "referenceSearchVisible"
+    },
+    {
+        "key": "shift+tab",
+        "command": "goToPreviousReference",
+        "when": "referenceSearchVisible"
+    },
+    {
+        "key": "tab",
+        "command": "references-view.next",
+        "when": "reference-list.hasResult"
+    },
+    {
+        "key": "shift+tab",
+        "command": "references-view.prev",
+        "when": "reference-list.hasResult"
+    },
+]
