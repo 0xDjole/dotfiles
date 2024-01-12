@@ -14,8 +14,6 @@
     "vim.leader": "<Space>",
     "vim.hlsearch": true,
     "vim.normalModeKeyBindingsNonRecursive": [
-        // NAVIGATION
-        // switch b/w buffers
         {
             "before": [
                 "g",
@@ -169,7 +167,7 @@
             "before": [
                 "leader",
                 "f",
-                "w"
+                "s"
             ],
             "commands": [
                 "workbench.view.search"
