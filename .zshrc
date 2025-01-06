@@ -8,7 +8,6 @@ TERMINAL=alacritty
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias vim='nvim'
 PS1='[\u@\h \W]\$ '
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -43,7 +42,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
-export EDITOR=nvim
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
