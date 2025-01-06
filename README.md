@@ -180,7 +180,7 @@
 - Install all of the required packages with pacman ( some might be missing from the list.
 
   ```
-  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit picom nitrogen discord nemo flameshot alacritty bspwm sxhkd rustup alsa-utils pulseaudio pavucontrol bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift xclip xdo ntfs-3g acpid
+  pacman -S neovim sudo grub efibootmgr dosfstools os-prober mtools networkmanager base-devel git xorg xorg-xinit picom nitrogen discord nemo flameshot alacritty bspwm sxhkd rustup alsa-utils pulseaudio pavucontrol bc rofi wmctrl xdotool ripgrep wget noto-fonts neofetch net-tools rust-analyzer docker docker-compose redshift xclip xdo ntfs-3g acpid firefox
   ```
 - Install zshrc
   ```
@@ -313,7 +313,7 @@
 - Let's install **yay** helper, so we can easily install other dependencies not included in official pacman repo.
   `git clone https://aur.archlinux.org/yay-git.git && cd yay-git && makepkg -si && cd .. && rm -rf yay-git`
   Then we install:
-  `yay -S polybar google-chrome libinput-gestures nerd-fonts-complete mongodb-compass postman-bin betterlockscreen` 
+  `yay -S polybar libinput-gestures postman-bin betterlockscreen ttf-jetbrains-mono-nerd ttf-fira-code-nerd ttf-hack-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra` 
   We will also install nvm to manage our node versions.
   `git clone http://github.com/creationix/nvm.git .nvm`
   `source $HOME/.nvm/nvm.sh`
