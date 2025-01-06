@@ -56,10 +56,13 @@ module-margin-right = 1
 font-0 = JetBrainsMono Nerd Font:size=11;2
 
 modules-left = bspwm
-modules-right = date pulseaudio wlan battery
+modules-right = date pulseaudio wlan battery tray
 
-tray-position = right
-tray-padding = 2
+[module/tray]
+type = internal/tray
+tray-position = right   
+tray-padding = 2        
+
 
 cursor-click = pointer
 cursor-scroll = ns-resize
